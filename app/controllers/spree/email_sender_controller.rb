@@ -15,8 +15,7 @@ class Spree::EmailSenderController < Spree::BaseController
       @mail_to_friend.host = request.env['HTTP_HOST']
       respond_to do |format|
         format.html do
-          captcha_passed = !Spree::Captcha::Config[:use_captcha] || verify_recaptcha(:private_key => Spree::Captcha::Config[:private_key])
-          if @mail_to_friend.valid? && captcha_passed
+          if @mail_to_friend.valid?
             flash[:notice] = I18n.t('email_to_friend.mail_sent_to', :email => @mail_to_friend.recipient_email).html_safe
             flash[:notice] << ActionController::Base.helpers.link_to(I18n.t('email_to_friend.send_to_other'), email_to_friend_path(@object.class.name.split("::").last.downcase, @object)).html_safe
 

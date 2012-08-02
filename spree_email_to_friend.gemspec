@@ -17,6 +17,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'spree_core', '>= 1.0.0'
   s.add_dependency 'spree_auth', '>= 1.0.0'
-  s.add_dependency 'recaptcha', '>= 0.3.1'
+  s.add_dependency 'honeypot-captcha', '>= 0.0.2'
   s.add_development_dependency 'rspec-rails'
 end
