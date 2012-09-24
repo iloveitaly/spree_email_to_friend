@@ -46,6 +46,6 @@ class Spree::EmailSenderController < Spree::BaseController
       @object ||= class_name.find_by_permalink(params[:id]) if class_name.respond_to?('find_by_permalink')
       @object ||= class_name.get_by_param(params[:id]) if class_name.respond_to?('get_by_param')
 
-      redirect_to(root_path) if @object.blank?
+      raise ActiveRecord::RecordNotFound if @object.blank?
     end
 end
